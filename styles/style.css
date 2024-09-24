@@ -5,4 +5,28 @@ body{
 form{
    display: flex;
    justify-content: center;
+   
+}
+
+input{
+    border-radius: 10px;
+    height:35px;
+    width: 200px;
+    margin-right: 10px;
+    text-size-adjust:inherit;
+}
+
+button{
+    border-radius: 10px;
+    width: 60px;
+    margin-left: 10px;
+}
+
+#taskList {
+    width: 100%; 
+    max-height: 100%; 
+    border: 1px solid #723b3b; 
+    padding: 10px; 
+    list-style-type: none; 
+    box-sizing: border-box; 
 }
