@@ -34,6 +34,12 @@ button.addEventListener("click", function (event) {
   }
   li.textContent = task.toUpperCase() + " (Due: " + dueDate + ")";
 
+  const notification = document.createElement("div");
+  notification.textContent = "Task added successfully!";
+  notification.style.color = "green";
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 2000);
+
   li.style.padding = "10px";
   li.style.margin = "5px 0";
   li.style.backgroundColor = "#f9f9f9";
@@ -86,24 +92,23 @@ taskList.addEventListener("click", function (event) {
     event.target.textContent === "Edit"
   ) {
     const li = event.target.parentNode;
-    const taskContent = li.firstChild.textContent; 
-    const newTask = prompt("Edit your task:", taskContent); 
+    const taskContent = li.firstChild.textContent;
+    const newTask = prompt("Edit your task:", taskContent);
     if (newTask) {
-      li.firstChild.textContent = newTask; 
+      li.firstChild.textContent = newTask;
     }
   }
 });
 
 window.addEventListener("beforeunload", function (event) {
   event.preventDefault();
-  event.returnValue = ''; 
+  event.returnValue = "";
 });
 
-button.addEventListener("click", function () {
-  const notification = document.createElement("div");
-  notification.textContent = "Task added successfully!";
-  notification.style.color = "green";
-  document.body.appendChild(notification);
-  setTimeout(() => notification.remove(), 2000); 
-});
-
+// button.addEventListener("click", function () {
+//   const notification = document.createElement("div");
+//   notification.textContent = "Task added successfully!";
+//   notification.style.color = "green";
+//   document.body.appendChild(notification);
+//   setTimeout(() => notification.remove(), 2000);
+// });
