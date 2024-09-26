@@ -52,6 +52,10 @@ button.addEventListener("click", function (event) {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
 
+  const buttonContainer = document.createElement("div");
+  buttonContainer.style.display = "flex"; 
+  buttonContainer.style.alignItems = "center"; 
+
   deleteButton.style.backgroundColor = "#ff6b6b";
   deleteButton.style.border = "none";
   deleteButton.style.color = "white";
@@ -71,9 +75,13 @@ button.addEventListener("click", function (event) {
     taskList.removeChild(li);
   });
 
-  li.appendChild(editButton);
-  li.appendChild(deleteButton);
+  buttonContainer.appendChild(editButton); 
+  buttonContainer.appendChild(deleteButton);
+
+  li.appendChild(buttonContainer); 
+
   taskList.appendChild(li);
+
   input.value = "";
   dateInput.value = "";
 });
@@ -104,11 +112,3 @@ window.addEventListener("beforeunload", function (event) {
   event.preventDefault();
   event.returnValue = "";
 });
-
-// button.addEventListener("click", function () {
-//   const notification = document.createElement("div");
-//   notification.textContent = "Task added successfully!";
-//   notification.style.color = "green";
-//   document.body.appendChild(notification);
-//   setTimeout(() => notification.remove(), 2000);
-// });
