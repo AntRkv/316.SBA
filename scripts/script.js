@@ -53,8 +53,8 @@ button.addEventListener("click", function (event) {
   deleteButton.textContent = "Delete";
 
   const buttonContainer = document.createElement("div");
-  buttonContainer.style.display = "flex"; 
-  buttonContainer.style.alignItems = "center"; 
+  buttonContainer.style.display = "flex";
+  buttonContainer.style.alignItems = "center";
 
   deleteButton.style.backgroundColor = "#ff6b6b";
   deleteButton.style.border = "none";
@@ -75,15 +75,26 @@ button.addEventListener("click", function (event) {
     taskList.removeChild(li);
   });
 
-  buttonContainer.appendChild(editButton); 
+  editButton.addEventListener("click", function () {
+    const newTask = prompt("Edit your task:", task);
+    const newDueDate = prompt("Edit due date:", dueDate);
+    if (newTask && newDueDate) {
+      li.textContent = newTask.toUpperCase() + " (Due: " + newDueDate + ")";
+      li.appendChild(buttonContainer);
+      highlightTodayTasks();
+    }
+  });
+
+  buttonContainer.appendChild(editButton);
   buttonContainer.appendChild(deleteButton);
 
-  li.appendChild(buttonContainer); 
+  li.appendChild(buttonContainer);
 
   taskList.appendChild(li);
 
   input.value = "";
   dateInput.value = "";
+  highlightTodayTasks();
 });
 
 input.addEventListener("input", function () {
@@ -112,3 +123,19 @@ window.addEventListener("beforeunload", function (event) {
   event.preventDefault();
   event.returnValue = "";
 });
+
+function highlightTodayTasks() {
+  const tasks = document.querySelectorAll("li");
+  tasks.forEach((task) => {
+    const taskText = task.textContent;
+    const dueDateMatch = taskText.match(/\(Due: (.+)\)/);
+    if (dueDateMatch) {
+      const dueDate = dueDateMatch[1];
+      if (dueDate === today) {
+        task.style.backgroundColor = "#ffeb3b";
+      } else {
+        task.style.backgroundColor = "#f9f9f9";
+      }
+    }
+  });
+}

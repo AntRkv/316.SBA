@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO LIST</title>
-    <link rel="stylesheet" href="./styles/style.css">
-    <script defer src="./scripts/script.js" ></script>
-</head>
-<body>
-    <h1 style="text-align: center;">TO-DO List:</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO LIST</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script defer src="./scripts/script.js"></script>
+  </head>
+  <body>
+    <h1 style="text-align: center">TO-DO List:</h1>
     <form class="form" action="/submit" method="post">
-        <input type="text" name="input" required  placeholder="Add things to do.." minlength="3">
-         <input placeholder="Due Date" type="text" onfocus="(this.type = 'date')" id="dueDate" required min="">
-        <button type="submit">Add</button>
+      <input
+        type="text"
+        name="input"
+        required
+        placeholder="Add things to do.."
+        minlength="3"
+      />
+      <input
+        placeholder="Due Date"
+        type="text"
+        onfocus="(this.type = 'date')"
+        id="dueDate"
+        required
+        min=""
+      />
+      <button type="submit">Add</button>
     </form>
 
     <ul id="taskList"></ul>
-
-
-</body>
+  </body>
 </html>
